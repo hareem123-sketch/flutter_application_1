@@ -1,26 +1,70 @@
 # Assignment:Flutter Development Intern Task — Object Detection with Native ML Kit
-This Flutter app demonstrates real-time object detection using native ML Kit APIs via platform channels.
+# Flutter Native Object Detection App
 
-Platform channel between Flutter and Android is set up.
+This Flutter application demonstrates a cross-platform approach to real-time object detection using **native ML Kit APIs** integrated through **platform channels** — without relying on any pub.dev ML packages.
 
-Floating button in Flutter triggers native method call.
+---
 
-Kotlin method stub added and confirmed working via debug console.
+## 🚀 Features Implemented
 
-➤ What’s Missing
-Full CameraX and ML Kit object detection logic on Android.
-iOS platform channel not yet implemented (Windows limitation).
+- ✅ Flutter UI with a live camera button
+- ✅ Platform channel (`MethodChannel`) from Flutter to Android (Kotlin)
+- ✅ Basic Android native method stub (`startDetection`) implemented
+- ✅ Debug messages verified in Debug Console
 
-➤ Blockers
-Git missing from system PATH delayed initial setup.
+---
 
-CameraX setup requires additional permission handling.
+## ❌ Features Not Yet Completed
 
-iOS native code could not be tested or implemented due to lack of macOS.
+- ❌ Full CameraX + ML Kit object detection implementation on Android
+- ❌ iOS implementation (platform channel in Swift)
+- ❌ Real-time camera preview UI integration
+- ❌ Object detection result rendering in Flutter UI
 
-➤ Approach & Thought Process
-Followed platform channel setup based on Flutter’s official docs and 0x48lab reference repo.
+---
 
-Kept all logic separated for easy integration of CameraX + ML Kit later.
+## 🧱 Folder Structure Overview
 
-Structured main.dart to allow easy testing of native callbacks.
+flutter_object_detection/
+├── lib/
+│ └── main.dart
+├── android/
+│ └── app/src/main/kotlin/.../MainActivity.kt
+├── ios/
+│ └── (not implemented due to Windows limitation)
+├── pubspec.yaml
+├── README.md
+
+
+
+---
+
+## 🧠 Thought Process & Approach
+
+- Started with UI and platform channel setup (inspired by [0x48lab/flutter_body_detection](https://github.com/0x48lab/flutter_body_detection))
+- Used `MethodChannel` to create communication bridge between Dart and Kotlin
+- Aimed to follow clean architecture: isolate native code logic on each platform
+- Prioritized Android first due to development environment constraints (Windows)
+
+---
+
+## 🚧 Blockers & Challenges
+
+- ❗ **Missing Git in PATH** delayed Flutter setup (`flutter doctor` error)
+- ❗ **No macOS** available for building and testing iOS native code
+- ❗ CameraX and ML Kit integration require further configuration (camera permission, lifecycle management)
+- ❗ Real-time preview and overlaying detection boxes yet to be implemented
+
+---
+
+## 🔧 How to Run
+
+> Make sure you have Flutter and Git installed and configured on your system.
+
+1. Clone the project or unzip the folder
+2. Run `flutter pub get` to fetch dependencies
+3. Connect an Android device or emulator
+4. Run the app with:
+
+```bash
+flutter run
